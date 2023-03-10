@@ -32,7 +32,7 @@ export default function Home() {
           >
             <DynamicWidgets
               facets={[]}
-              fallbackComponent={(props) => <RefinementList {...props} />}
+              fallbackComponent={RefinementList}
             />
           </InstantSearch>
         </div>
