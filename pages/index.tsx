@@ -31,8 +31,9 @@ export default function Home() {
             indexName="instant_search"
           >
             <DynamicWidgets
-              facets={[]}
+              facets={['*']}
               fallbackComponent={RefinementList}
+              maxValuesPerFacet={20}
             />
           </InstantSearch>
         </div>
