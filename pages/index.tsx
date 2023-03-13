@@ -11,6 +11,7 @@ import algoliasearch from "algoliasearch";
 
 export default function Home() {
   const client = algoliasearch("latency", "6be0576ff61c053d5f9a3225e2a90f76");
+  const facets = ["brand", "categories", "price", "rating", "popularity", "free_shipping", "type"];
   return (
     <>
       <Head>
@@ -30,11 +31,12 @@ export default function Home() {
             searchClient={client}
             indexName="instant_search"
           >
-            <DynamicWidgets
-              facets={['*']}
-              fallbackComponent={RefinementList}
-              maxValuesPerFacet={20}
-            />
+            {facets.map((facet, i) => (
+              <div key={i}>
+                <label><b>{facet}</b></label>
+                <RefinementList attribute={facet} />
+              </div>
+            ))}
           </InstantSearch>
         </div>
       </main>
